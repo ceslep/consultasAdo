@@ -1,114 +1,305 @@
 <!doctype html>
 
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, user-scalable=no"> 
-  <title>Ortocentro</title>
-  <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  
+<html lang="es">
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Ortocentro</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css" />
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="js/utils.js"></script>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
-  <a class="navbar-brand" href="#">Consulta de Pagos Ortocentro</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="#">Inicio <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="#" id="apacientesModal">Pagos</a>
-      <a class="nav-item nav-link" href="#">Otras Consultas</a>
-      
-    </div>
-  </div>
-</nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <a class="navbar-brand" href="#">Ortocentro</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="#">Inicio <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="#" id="apacientesModal" data-container="#pagos">Pagos</a>
 
-<div class="modal fade" id="pacientesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header bg-primary text-light">
-        <h5 class="modal-title" id="exampleModalLabel">Buscar Pacientes Ortocentro</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Paciente(Nombres o Cédula):</label>
-            <input type="text" class="form-control bg-secondary" id="criterio">
-          </div>
-          
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" id='buscarPaciente'>Buscar</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container">
-<div id="pacientes" class="container-fluid">
-   <table class="table">
-		<thead>
-			<tr>
-				<th>
-					Identificación
-				</th>
-				<th>
-					Nombres
-				</th>
-				<th>
-					Opciones	
-				</th>
-			</tr>
-		</thead>
-		<tbody id="dataPacientes">
-			
-		</tbody>
-   </table>
-</div>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Otras Consultas
+        </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#!" data-container="#conSP">Consultas Salud Pública</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-</div>
-<div id="pagos" class="container-fluid">
-   <table class="table table-striped table-bordered table-hover">
-		<thead class="thead-dark bg-info">
-			<tr>
-				<th>
-					Fecha
-				</th>
-				<th>
-					Factura
-				</th>
-				<th>
-					Valor	
-				</th>
-				<th>
-					Detalle
-				</th>
-				<th>
-					Pago
-				</th>
-				<th>
-				    Doctor
-				</th>
-			</tr>
-		</thead>
-		<tbody id="dataPagos">
-			
-		</tbody>
-   </table>
-</div>
+    <div class="modal fade" id="pacientesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-light">
+                    <h5 class="modal-title" id="exampleModalLabel">Buscar Pacientes Ortocentro</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Paciente(Nombres o Cédula):</label>
+                            <input type="text" class="form-control bg-secondary" id="criterio">
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id='buscarPaciente'>Buscar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container page d-none" id="cverpagos">
+        <div id="pacientes" class="container-fluid">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Identificación
+                        </th>
+                        <th>
+                            Nombres
+                        </th>
+                        <th>
+                            Opciones
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="dataPacientes">
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <div id="pagos" class="container-fluid page d-none">
+        <table class="table table-striped table-bordered table-hover">
+            <thead class="thead-dark bg-info">
+                <tr>
+                    <th>
+                        Fecha
+                    </th>
+                    <th>
+                        Factura
+                    </th>
+                    <th>
+                        Valor
+                    </th>
+                    <th>
+                        Detalle
+                    </th>
+                    <th>
+                        Pago
+                    </th>
+                    <th>
+                        Doctor
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="dataPagos">
+
+            </tbody>
+        </table>
+    </div>
+    <div class="container d-none page pt-2" id="conSP">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Hola!</strong> Consultas de Salud Pública.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+        </div>
+        <div class="progress w-100 mx-auto d-none" style="height:18px;">
+            <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+        </div>
+        <ul class="nav nav-tabs w-100" id="myTabs1">
+            <li class="nav-item">
+                <a class="nav-link active" href="#datos" data-toggle="tab" href="#datos" role="tab" aria-controls="profile" aria-selected="false">Datos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="agrupaciones-tab" data-toggle="tab" href="#agrupaciones" role="tab" aria-controls="agrupaciones" aria-selected="false">Agrupaciones</a>
+            </li>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#otras" role="tab" aria-controls="contact" aria-selected="false">Otras</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="datos" role="tabpanel" aria-labelledby="home-tab">
+                <div class="row pt-2">
+                    <div class="col-12 col-sm-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                Todos Los pacientes
+              </label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <button class="btn btn-outline-primary d-block btn-sm w-100 btnFechas">
+                Seleccionar Fechas
+              </button>
+                    </div>
+                </div>
+                <small id="textload" class="d-none"></small>
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border d-none" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+                <div class="container-fluid pt-3" id="tablePacientes">
+                    <table id='tdataPac' class='display pt-3'>
+
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="agrupaciones" role="tabpanel" aria-labelledby="agrupaciones-tab">
+                <div class="accordion" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                  Población
+                      </button>
+                            </h2>
+                        </div>
+
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-center">
+                                    <div class="spinner-border d-none spb" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                                <canvas id="myChartPoblacion" width="400" height="400"></canvas>
+                                <table id="poblacion" class="display" style="width:100%">
+                                    <thead id="theadp">
+
+                                    </thead>
+                                    <tbody id="tpoblacion"></tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Rango de Edad</th>
+                                            <th>Cantidad</th>
+
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        coberturas dt y pe e indicadore propios del programa
+                      </button>
+                            </h2>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-center">
+                                    <div class="spinner-border d-none spb" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                                <canvas id="myChartPoblacionc" width="400" height="400"></canvas>
+                                <table id="poblacionc" class="display" style="width:100%">
+                                    <thead id="theadc">
+
+                                    </thead>
+                                    <tbody id="tcoberturas">
+
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Rango de Edad</th>
+                                            <th>Cantidad</th>
+
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Control de placa bacteriana
+                      </button>
+                            </h2>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-center">
+                                    <div class="spinner-border d-none spb" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                                <canvas id="myChartPoblaciondt" width="400" height="400"></canvas>
+                                <table id="poblacionc" class="display" style="width:100%">
+                                    <thead id="theaddt">
+
+                                    </thead>
+                                    <tbody id="tcoberturasdt">
+
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Rango de Edad</th>
+                                            <th>Cantidad</th>
+
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="otras" role="tabpanel" aria-labelledby="contact-tab">...</div>
+        </div>
+
+
+    </div>
+
 
 </body>
-	<script src="app.js"></script>
+<script src="app.js"></script>
+
 </html>
